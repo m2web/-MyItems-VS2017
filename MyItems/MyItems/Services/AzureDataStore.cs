@@ -61,7 +61,7 @@ namespace MyItems.Services
             if (forceRefresh)
                 await PullLatestAsync();
 
-            return await itemsTable.ToEnumerableAsync();
+            return await itemsTable.OrderByDescending(c => c.CreatedAt).ToEnumerableAsync();
         }
 
         public async Task<Item> GetItemAsync(string id)
